@@ -1,6 +1,6 @@
 require 'pry'
 VERSION = 1
-class Hamming
+class Hamming #Hamming
     def self.compute(a, b)
         diff = 0
         i = 0
