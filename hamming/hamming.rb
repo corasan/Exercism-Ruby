@@ -1,17 +1,8 @@
 require 'pry'
 VERSION = 1
-class Hamming #Hamming
+class Hamming
     def self.compute(a, b)
-        diff = 0
-        i = 0
-        if a.length == b.length
-            while i < a.chars.length
-                diff += 1 if a.chars[i] != b.chars[i]
-                i += 1
-            end
-        else
-            raise(ArgumentError)
-        end
-        diff
+        raise(ArgumentError) unless a.length == b.length
+        a.chars.zip(b.chars).count{|x,y| x != y}
     end
 end
