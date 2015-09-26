@@ -4,12 +4,17 @@ NUCLEOTIDES = {"G" => "C", "C" => "G", "T" => "A", "A" => "U"}
 
 class Complement
     def self.of_dna(dna)
-        raise ArgumentError.new unless dna.chars.all? {|n| n =~ /[GCTA]/}
-        dna.chars.map {|strand| NUCLEOTIDES[strand]}.join
+      validate(dna, /[GCTA]/)
+      dna.chars.map {|nucleotide| NUCLEOTIDES[nucleotide]}.join
     end
 
     def self.of_rna(rna)
-        raise ArgumentError.new unless rna.chars.all? {|n| n =~ /[CGAU]/}
-        rna.chars.map {|strand| NUCLEOTIDES.key(strand)}.join
+      validate(rna, /[CGAU]/)
+      rna.chars.map {|nucleotide| NUCLEOTIDES.key(nucleotide)}.join
     end
+
+    def self.validate(strand, sequence)
+      raise ArgumentError.new("Error! Invalid complement.") unless strand.chars.all? {|n| n =~ sequence}
+    end
+
 end
