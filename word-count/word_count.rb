@@ -6,7 +6,7 @@ class Phrase
   end
 
   def word_count
-    @words.each { |w| words_hash[w] = @words.count(w) }
+    @words.each { |w| @words_hash[w] = @words.count(w) }
     @words_hash
   end
 end
